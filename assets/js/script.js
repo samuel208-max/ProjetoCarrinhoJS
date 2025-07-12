@@ -1,40 +1,49 @@
 const produtos = document.getElementById('produtos')
 const ul = document.createElement('ul')
 ul.className = "ul_produtos"
-
 const produtosCarrinho = document.getElementById('produtosCarrinho')
+const totalCarrinho = document.getElementById('total')
 
 let produtos1 = [
     {
         imagem: '/assets/images/gin.jpg',
         nome: 'gin',
-        valor: 30.00
+        valor: 89.90
+    },
+    {
+        imagem: '/assets/images/energetico.webp',
+        nome: 'energético',
+        valor: 9.90
+    },
+    {
+        imagem: '/assets/images/cocaKS.jpeg',
+        nome: 'Coca-Cola KS',
+        valor: 16.50
     },
     {
         imagem: '/assets/images/whisky.jpg',
         nome: 'Whisky',
-        valor: 30.00
+        valor: 129.90
     },
     {
         imagem: '/assets/images/licor.jpg',
         nome: 'Licor',
-        valor: 40.00
+        valor: 59.90
     },
     {
         imagem: '/assets/images/vinhos.png',
         nome: 'Vinho',
-        valor: 40.00
+        valor: 49.90
     },
     {
         imagem: '/assets/images/cerveja.jpg',
         nome: 'Heineken',
-        valor: 40.00
+        valor: 6.90
     }
 ]
 
-let carrinho = []
 
-// let total = 0
+let carrinho = []
 
 produtos1.forEach((produto) => {
     const li = document.createElement('li');
@@ -56,13 +65,20 @@ produtos1.forEach((produto) => {
     produtos.appendChild(ul)
 
     comprar.addEventListener('click', () => {
-        carrinho.push(produto)
+        const existente = carrinho.find(item => item.nome === produto.nome) //.find() é um método de arrays em JavaScript que retorna o primeiro item do array que satisfaz uma condição.
+        if (existente) {
+            existente.quantidade += 1
+        } else {
+            carrinho.push({ ...produto, quantidade: 1 })
+        }
         atualizarCarrinho()
     })
 })
 
+
 function atualizarCarrinho() {
     produtosCarrinho.innerHTML = ''
+    let total = 0;
 
     carrinho.forEach((produto, index) => {
 
@@ -71,25 +87,31 @@ function atualizarCarrinho() {
 
         const liItem = document.createElement('p')
         liItem.className = 'item_lista'
-        liItem.append(`${produto.nome} - R$${produto.valor}`)
+        liItem.append(`${produto.nome} (x${produto.quantidade}) - R$${(produto.valor * produto.quantidade).toFixed(2)}`)
 
         const btnRemover = document.createElement('p')
-        btnRemover.textContent = "X"
+        btnRemover.textContent = "-"
         btnRemover.style.cursor = 'pointer'
 
         btnRemover.addEventListener('click', () => {
             removerCarrinho(index)
         })
 
+        total += produto.valor * produto.quantidade
+
         li_carrinho.appendChild(liItem)
         li_carrinho.appendChild(btnRemover)
         produtosCarrinho.appendChild(li_carrinho)
     })
+    totalCarrinho.textContent = `Total: R$${total.toFixed(2)}`
 }
 
 function removerCarrinho(index) {
-    const produtoRemovido = carrinho[index];
-    carrinho.splice(index, 1);
+    if (carrinho[index].quantidade > 1) {
+        carrinho[index].quantidade -= 1
+    } else {
+        carrinho.splice(index, 1)
+    }
     atualizarCarrinho();
 }
 
