@@ -5,12 +5,25 @@
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    object-fit: cover;
 }
 
 button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 header {
@@ -46,6 +59,45 @@ header ul button {
     cursor: pointer;
 }
 
+.ul_produtos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    opacity: 0.9;
+    z-index: 1000;
+    animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 #checkout {
     display: none;
     position: fixed;
@@ -54,6 +106,9 @@ header ul button {
     width: 400px;
     height: 100%;
     background-color: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 999;
 }
 
 #checkout div {
@@ -67,8 +122,9 @@ header ul button {
     display: flex;
     list-style: none;
     justify-content: space-between;
-    margin: 15px 30px;
-    text-transform: uppercase;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 999;
 }
 
 .ul_produtos {
@@ -97,4 +153,37 @@ header ul button {
     border: none;
     background-color: rgb(44, 40, 40);
     color: #fff;
+}
+
+
+/* ========================== MODAL ============================= */
+
+#modal {
+    margin: 20px auto !important;
+    padding: 20px;
+}
+
+
+
+.modal-header {
+    display: flex;
+    gap: 15px;
+}
+
+.modal-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.modal-main div {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }

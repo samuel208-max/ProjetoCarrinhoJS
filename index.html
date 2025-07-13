@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/styleGPT.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <span><img src="./assets/images/logo.jpg" id="logo"></span>
         <ul>
             <li><button>Delivery</button></li>
-            <li><button>+ Produto</button></li>
+            <li><button id="abrirModal">+ Produto</button></li>
             <li><button id="abrirCarrinho">🛒</button></li>
         </ul>
     </header>
@@ -30,6 +30,36 @@
         <ul id="produtosCarrinho"></ul>
         <h1 id="total"></h1>
     </div>
+
+
+    <dialog id="modal">
+        <div id="fundo">
+            <form>
+                <div class="modal-header">
+                    <h1>Cadastrar Produto</h1>
+                    <button id="fecharModal">X</button>
+                </div>
+                <div class="modal-main">
+                    <div>
+                        <label>Nome do produto:</label>
+                        <input type="text" name="inputNome" id="inputNome" required>
+                    </div>
+                    <div>
+                        <label>Selecione a foto do produto</label>
+                        <input type="text" name="inputFoto" id="inputFoto" placeholder="Digite a URL da imagem" required>
+                    </div>
+                    <div>
+                        <label>Digite o valor do produto</label>
+                        <input type="number" name="inputValor" id="inputValor" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" id="botaoCancelar">Cancelar</button>
+                    <button type="submit" id="botaoCadastrar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
 
     <script src="./assets/js/script.js"></script>
 </body>
