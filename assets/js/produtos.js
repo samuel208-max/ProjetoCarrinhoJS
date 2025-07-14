@@ -34,5 +34,33 @@ let produtos1 = JSON.parse(localStorage.getItem('produtos1')) || [ //usa o JSON.
         imagem: '/assets/images/cerveja.jpg',
         nome: 'Heineken',
         valor: 6.90
+    },
+
+
+    //adicionados pelo GPT para testes
+    {
+        imagem: '/assets/images/sprite2L.jpg',
+        nome: 'Sprite 2L',
+        valor: 8.50
+    },
+    {
+        imagem: '/assets/images/cervejaCorona.webp',
+        nome: 'Cerveja Corona 355ml',
+        valor: 7.50
+    },
+    {
+        imagem: '/assets/images/agua500ml.jpg',
+        nome: 'Água Mineral 500ml',
+        valor: 2.00
+    },
+    {
+        imagem: '/assets/images/sucoLaranja.jpg',
+        nome: 'Suco de Laranja Natural 1L',
+        valor: 12.00
+    },
+    {
+        imagem: '/assets/images/vodkaAbsolute.jpg',
+        nome: 'Vodka Absolut 1L',
+        valor: 99.90
     }
 ]
